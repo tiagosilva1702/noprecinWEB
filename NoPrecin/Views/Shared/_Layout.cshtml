@@ -6,6 +6,8 @@
     <title>@ViewData["Title"] - NoPrecin</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/album.css" />
+    <link rel="stylesheet" href="~/css/_card.css" />
 </head>
 <body>
     <header>
@@ -31,18 +33,17 @@
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Index" asp-action="Register">Registrar</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Index" asp-action="Usuarios">Registrar</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
 
     <footer class="border-top footer text-muted">
         <div class="container">
