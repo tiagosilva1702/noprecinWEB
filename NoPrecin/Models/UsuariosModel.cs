@@ -9,6 +9,9 @@ namespace NoPrecin.Models
 {
     public class Usuario
     {
+        public Guid Id { get; set; }
+        public string AcessToken { get; set; }
+
         [Required]
         [EmailAddress]
         public string Email { get; set; }
@@ -19,13 +22,6 @@ namespace NoPrecin.Models
         [Display(Name = "Confirme a senha")]
         [Compare("Password", ErrorMessage = "As senhas não conferem")]
         public string ConfirmPassword { get; set; }
-    }
-
-    public class UsuarioAutenticado
-    {
-        public Guid id { get; set; }
-        public string email { get; set; }
-        public string acessToken { get; set; }
     }
 
 

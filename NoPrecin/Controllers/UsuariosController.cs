@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Session;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using NoPrecin.Models;
 using System;
 using System.Collections.Generic;
@@ -12,8 +14,6 @@ namespace NoPrecin.Controllers
 {
     public class UsuariosController : Controller
     {
-        private readonly string apiUrl = "https://localhost:44328/api/";
-
         public IActionResult Login()
         {
             return View();
@@ -22,7 +22,9 @@ namespace NoPrecin.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(Usuario model)
         {
-            UsuarioAutenticado usuario = new UsuarioAutenticado();
+            Usuario usuario = new Usuario();
+
+            JObject jObject = new JObject();
 
             var json = JsonConvert.SerializeObject(model);
 
@@ -30,13 +32,24 @@ namespace NoPrecin.Controllers
 
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.PostAsync(apiUrl + "entrar", postRequest).ConfigureAwait(false))
+                using (var response = await httpClient.PostAsync(HttpContext.Session.GetObject("apiUrl") + "entrar", postRequest).ConfigureAwait(false))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
-                    usuario = JsonConvert.DeserializeObject<UsuarioAutenticado>(apiResponse);
+
+                    jObject = (JObject)JsonConvert.DeserializeObject(apiResponse);
+                    
+                    if (Convert.ToBoolean(jObject["sucess"]) == false)
+                    {
+                        return View();
+                    }
+
+                    usuario.AcessToken = jObject["data"].Value<string>("acessToken");
+                    usuario.Id = Guid.Parse(jObject["data"]["userToken"].Value<string>("id"));
+                    usuario.Email = jObject["data"]["userToken"].Value<string>("email");
                 }
             }
-            return View(usuario);
+
+            return RedirectToAction("Index", "Produtos", new { usuario.Id, usuario.AcessToken });
         }
 
         public IActionResult NovaConta()
@@ -55,7 +68,7 @@ namespace NoPrecin.Controllers
 
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.PostAsync(apiUrl + "nova-conta", postRequest).ConfigureAwait(false))
+                using (var response = await httpClient.PostAsync(HttpContext.Session.GetObject("apiUrl") + "nova-conta", postRequest).ConfigureAwait(false))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     usuario = JsonConvert.DeserializeObject<Usuario>(apiResponse);

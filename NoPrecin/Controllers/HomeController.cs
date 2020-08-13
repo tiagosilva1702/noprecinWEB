@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using NoPrecin.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace NoPrecin.Controllers
 {
@@ -13,7 +16,7 @@ namespace NoPrecin.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        private readonly string apiUrl = "https://localhost:44328/api/produtos";
+        private static string _urlBase;
 
         public HomeController(ILogger<HomeController> logger)
         {

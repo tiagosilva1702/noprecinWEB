@@ -8,10 +8,12 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace NoPrecin.Context
 {
-    public class AppDbContext : IdentityDbContext
+    public class AppDbContext : DbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options)
       : base(options)
         { }
+
+        public DbSet<NoPrecin.Models.Produtos> Produtos { get; set; }
     }
 }
