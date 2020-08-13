@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using NoPrecin.Models;
 
 namespace NoPrecin.Controllers
@@ -20,9 +22,19 @@ namespace NoPrecin.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            List<Produtos> listaProdutos = new List<Produtos>();
+
+            using (var httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.GetAsync(apiUrl))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    listaProdutos = JsonConvert.DeserializeObject<List<Produtos>>(apiResponse);
+                }
+            }
+            return View(listaProdutos);
         }
 
         public IActionResult Privacy()
