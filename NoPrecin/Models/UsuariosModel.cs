@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NoPrecin.Models
 {
-    public class UsuariosCreate
+    public class Usuario
     {
         [Required]
         [EmailAddress]
@@ -20,6 +20,15 @@ namespace NoPrecin.Models
         [Compare("Password", ErrorMessage = "As senhas não conferem")]
         public string ConfirmPassword { get; set; }
     }
+
+    public class UsuarioAutenticado
+    {
+        public Guid id { get; set; }
+        public string email { get; set; }
+        public string acessToken { get; set; }
+    }
+
+
     public enum Perfil
     {
         administrador,

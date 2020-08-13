@@ -5,32 +5,63 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace NoPrecin.Controllers
 {
     public class UsuariosController : Controller
     {
-        private readonly string apiUrl = " https://localhost:44328/api/reservas";
+        private readonly string apiUrl = "https://localhost:44328/api/";
 
-        HttpClient cliente = new HttpClient();
-
-        public UsuariosController()
+        public IActionResult Login()
         {
-            cliente.BaseAddress = new Uri("http://localhost:44328/api/");
-
-            cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            return View();
         }
 
-        public async Task<List<UsuariosCreate>> Index()
+        [HttpPost]
+        public async Task<IActionResult> Login(Usuario model)
         {
-            HttpResponseMessage response = await cliente.GetAsync("api/usuarios");
-            if (response.IsSuccessStatusCode)
+            UsuarioAutenticado usuario = new UsuarioAutenticado();
+
+            var json = JsonConvert.SerializeObject(model);
+
+            var postRequest = new StringContent(json, Encoding.UTF8, "application/json");
+
+            using (var httpClient = new HttpClient())
             {
-                var dados = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<UsuariosCreate>>(dados);
+                using (var response = await httpClient.PostAsync(apiUrl + "entrar", postRequest).ConfigureAwait(false))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    usuario = JsonConvert.DeserializeObject<UsuarioAutenticado>(apiResponse);
+                }
             }
-            return new List<UsuariosCreate>();
+            return View(usuario);
+        }
+
+        public IActionResult NovaConta()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> NovaConta(Usuario model)
+        {
+            Usuario usuario = new Usuario();
+
+            var json = JsonConvert.SerializeObject(model);
+
+            var postRequest = new StringContent(json, Encoding.UTF8, "application/json");
+
+            using (var httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.PostAsync(apiUrl + "nova-conta", postRequest).ConfigureAwait(false))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    usuario = JsonConvert.DeserializeObject<Usuario>(apiResponse);
+                }
+            }
+            return View(usuario);
         }
     }
 }

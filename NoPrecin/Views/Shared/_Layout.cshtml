@@ -6,8 +6,6 @@
     <title>@ViewData["Title"] - NoPrecin</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/album.css" />
-    <link rel="stylesheet" href="~/css/_card.css" />
 </head>
 <body>
     <header>
@@ -21,30 +19,27 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="NovaConta">Novo Usuário</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Produtos" asp-action="Index">Produtos</a>
                         </li>
-                    </ul>
-
-                    <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Index" asp-action="Usuarios">Registrar</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Produtos" asp-action="Criar">Novo Produto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Login">Login</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
-
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2020 - NoPrecin - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>

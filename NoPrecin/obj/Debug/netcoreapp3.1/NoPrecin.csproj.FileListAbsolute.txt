@@ -436,3 +436,6 @@ C:\Users\TIAGO\Documents\GitHub\noprecinWEB\NoPrecin\bin\Debug\netcoreapp3.1\Mic
 C:\Users\TIAGO\Documents\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoPrecin.csproj.CoreCompileInputs.cache
 C:\Users\TIAGO\Documents\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoPrecin.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\TIAGO\Documents\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoPrecin.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\TIAGO\Documents\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\Razor\Views\Usuarios\Login.cshtml.g.cs
+C:\Users\TIAGO\Documents\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\Razor\Views\Usuarios\NovaConta.cshtml.g.cs
+C:\Users\TIAGO\Documents\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\Razor\Views\Produtos\Criar.cshtml.g.cs
