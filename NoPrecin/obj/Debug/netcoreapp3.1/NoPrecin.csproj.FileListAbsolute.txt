@@ -439,6 +439,14 @@ C:\Users\TIAGO\Documents\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoP
 C:\Users\TIAGO\Documents\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\Razor\Views\Usuarios\Login.cshtml.g.cs
 C:\Users\TIAGO\Documents\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\Razor\Views\Usuarios\NovaConta.cshtml.g.cs
 C:\Users\TIAGO\Documents\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\Razor\Views\Produtos\Criar.cshtml.g.cs
+C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoPrecin.AssemblyInfoInputs.cache
+C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoPrecin.AssemblyInfo.cs
+C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoPrecin.csproj.CoreCompileInputs.cache
+C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoPrecin.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoPrecin.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoPrecin.RazorAssemblyInfo.cache
+C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoPrecin.RazorAssemblyInfo.cs
+C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoPrecin.csprojAssemblyReference.cache
 C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -848,14 +856,6 @@ C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\bin\Debug\netcore
 C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoPrecin.csprojAssemblyReference.cache
-C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoPrecin.AssemblyInfoInputs.cache
-C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoPrecin.AssemblyInfo.cs
-C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoPrecin.csproj.CoreCompileInputs.cache
-C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoPrecin.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoPrecin.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoPrecin.RazorAssemblyInfo.cache
-C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoPrecin.RazorAssemblyInfo.cs
 C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoPrecin.TagHelpers.input.cache
 C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoPrecin.TagHelpers.output.cache
 C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoPrecin.RazorCoreGenerate.cache
@@ -869,6 +869,7 @@ C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcore
 C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\Razor\Views\Usuarios\Login.cshtml.g.cs
 C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\Razor\Views\Usuarios\NovaConta.cshtml.g.cs
+C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\Razor\Views\Vendas\Index.cshtml.g.cs
 C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
 C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
 C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoPrecin.RazorTargetAssemblyInfo.cache
