@@ -44,6 +44,7 @@ namespace NoPrecin.Controllers
                     
                     if (Convert.ToBoolean(jObject["sucess"]) == false)
                     {
+                        ViewData["Error"] = jObject["errors"];
                         return View();
                     }
 
@@ -84,6 +85,7 @@ namespace NoPrecin.Controllers
 
                     if (Convert.ToBoolean(jObject["sucess"]) == false)
                     {
+                        ViewData["Error"] = jObject["errors"];
                         return View();
                     }
 

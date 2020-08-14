@@ -395,3 +395,4 @@ NoPrecin/obj/NoPrecin.csproj.nuget.g.props
 NoPrecin/obj/project.assets.json
 *.cache
 .vs/noprecinWEB/v16/.suo
+NoPrecin/obj/

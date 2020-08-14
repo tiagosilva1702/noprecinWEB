@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\luame\\OneDrive\\Documentos\\GitHub\\noprecinWEB\\NoPrecin\\NoPrecin.csproj": {}
+    "C:\\Users\\TIAGO\\Documents\\GitHub\\noprecinWEB\\NoPrecin\\NoPrecin.csproj": {}
   },
   "projects": {
-    "C:\\Users\\luame\\OneDrive\\Documentos\\GitHub\\noprecinWEB\\NoPrecin\\NoPrecin.csproj": {
+    "C:\\Users\\TIAGO\\Documents\\GitHub\\noprecinWEB\\NoPrecin\\NoPrecin.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\luame\\OneDrive\\Documentos\\GitHub\\noprecinWEB\\NoPrecin\\NoPrecin.csproj",
+        "projectUniqueName": "C:\\Users\\TIAGO\\Documents\\GitHub\\noprecinWEB\\NoPrecin\\NoPrecin.csproj",
         "projectName": "NoPrecin",
-        "projectPath": "C:\\Users\\luame\\OneDrive\\Documentos\\GitHub\\noprecinWEB\\NoPrecin\\NoPrecin.csproj",
-        "packagesPath": "C:\\Users\\luame\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\luame\\OneDrive\\Documentos\\GitHub\\noprecinWEB\\NoPrecin\\obj\\",
+        "projectPath": "C:\\Users\\TIAGO\\Documents\\GitHub\\noprecinWEB\\NoPrecin\\NoPrecin.csproj",
+        "packagesPath": "C:\\Users\\TIAGO\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\TIAGO\\Documents\\GitHub\\noprecinWEB\\NoPrecin\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\luame\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\TIAGO\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -87,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -109,6 +109,7 @@ namespace NoPrecin.Controllers
 
             produto.Id = idImagem;
             produto.Id_Usuario = usuario.Id;
+            produto.DataCadastro = DateTime.Now;
             produto.Imagem = nomeArquivo;
 
             _context.Add(produto);

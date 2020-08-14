@@ -24,11 +24,13 @@
             <div class="form-group">
                 <input type="submit" value="Logar" class="btn btn-primary" />
             </div>
+            <div>
+                @if (ViewData["Error"] != null)
+                {
+                    <h5>@ViewData["Error"]</h5>
+                }
+            </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Voltar</a>
 </div>
 
