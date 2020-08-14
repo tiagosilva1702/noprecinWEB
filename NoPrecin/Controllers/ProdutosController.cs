@@ -19,6 +19,8 @@ namespace NoPrecin.Controllers
     public class ProdutosController : Controller
     {
         private readonly string apiUrl = "https://localhost:44328/api/produtos/";
+
+        
         //Define uma instância de IHostingEnvironment
         IWebHostEnvironment _appEnvironment;
         private readonly AppDbContext _context;
@@ -33,16 +35,28 @@ namespace NoPrecin.Controllers
         {
             List<Produtos> listaProdutos = new List<Produtos>();
 
+            Usuario usuario = new Usuario();
+            usuario.Id = HttpContext.Session.Get<Guid>("Id");
+            usuario.AcessToken = HttpContext.Session.Get<String>("AcessToken");
+            usuario.Email = HttpContext.Session.Get<String>("Email");
+
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync(apiUrl + "produtos"))
+                using (var response = await httpClient.GetAsync(apiUrl))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     listaProdutos = JsonConvert.DeserializeObject<List<Produtos>>(apiResponse);
                 }
             }
 
-            return View(listaProdutos);
+            //Retorna para a viu todos os produtos
+            if (usuario.AcessToken == null )
+            {
+                return RedirectToAction("Login", "Usuarios");
+            }
+
+            //Se o usuário estiver logado retorna lista com seus produtos
+            return View(listaProdutos.Where(x => x.Id_Usuario == usuario.Id));
         }
 
         public IActionResult Criar()
@@ -55,7 +69,12 @@ namespace NoPrecin.Controllers
         {
             Guid guid = Guid.NewGuid();
             Guid idImagem = Guid.NewGuid();
-            Guid idUsuario = Guid.NewGuid();
+
+            Usuario usuario = new Usuario();
+            usuario.Id = HttpContext.Session.Get<Guid>("Id");
+            usuario.AcessToken = HttpContext.Session.Get<String>("AcessToken");
+            usuario.Email = HttpContext.Session.Get<String>("Email");
+
             // Define um nome para o arquivo enviado incluindo o sufixo obtido de milesegundos
             string nomeArquivo = guid.ToString();
 
@@ -88,10 +107,8 @@ namespace NoPrecin.Controllers
                 }
             }
 
-
-
             produto.Id = idImagem;
-            produto.Id_Usuario = idUsuario;
+            produto.Id_Usuario = usuario.Id;
             produto.Imagem = nomeArquivo;
 
             _context.Add(produto);
@@ -131,8 +148,14 @@ namespace NoPrecin.Controllers
         [HttpPost]
         public async Task<IActionResult> Editar(int id, Produtos produto)
         {
+            Usuario usuario = new Usuario();
+            usuario.AcessToken = HttpContext.Session.Get<String>("AcessToken");
+            usuario.Email = HttpContext.Session.Get<String>("Email");
+
             Guid idImagem = Guid.NewGuid();
             produto.Imagem = Convert.ToString(idImagem);
+            produto.Id_Usuario = HttpContext.Session.Get<Guid>("Id");
+
             _context.Update(produto);
             await _context.SaveChangesAsync();
 

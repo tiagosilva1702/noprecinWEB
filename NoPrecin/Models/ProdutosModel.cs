@@ -13,14 +13,23 @@ namespace NoPrecin.Models
     public class Produtos
     {
         public Guid Id { get; set; }
+        [Display(Name = "Nome")]
         public string Nome { get; set; }
+        [Display(Name = "Descrição")]
         public string Descricao { get; set; }
+        [Display(Name = "Imagem")]
         public string Imagem { get; set; }
+        [Display(Name = "Valor")]
         public decimal Valor { get; set; }
+        [Display(Name = "Data Cadastro")]
+        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DataCadastro { get; set; }
+        [Display(Name = "Ativo")]
         public bool Ativo { get; set; }
+        [Display(Name = "Categória")]
         public Categoria Categoria { get; set; }
         public Guid Id_Usuario { get; set; }
+        [Display(Name = "Vendido")]
         public bool Vendido{ get; set; }
     }
 

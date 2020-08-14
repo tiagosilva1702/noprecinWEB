@@ -18,7 +18,7 @@ namespace NoPrecin.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        private static string _urlBase;
+        private readonly string apiUrl = "https://localhost:44328/api/produtos/";
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -37,7 +37,7 @@ namespace NoPrecin.Controllers
                     listaProdutos = JsonConvert.DeserializeObject<List<Produtos>>(apiResponse);
                 }
             }
-            return View(listaProdutos);
+            return View(listaProdutos.Where(x => x.Vendido == false && x.Ativo == true));
         }
 
         public IActionResult Privacy()
