@@ -360,3 +360,12 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+*.dll
+*.config
+.vs/noprecinWEB/v16/.suo
+*.dll
+*.exe
+*.v2
+*.cache
+*.pdb
+*.props
