@@ -20,7 +20,7 @@ namespace NoPrecin.Controllers
     {
         private readonly string apiUrl = "https://localhost:44328/api/produtos/";
 
-        
+
         //Define uma instância de IHostingEnvironment
         IWebHostEnvironment _appEnvironment;
         private readonly AppDbContext _context;
@@ -31,7 +31,7 @@ namespace NoPrecin.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index(Guid? Id, string acessToken)
+        public async Task<IActionResult> Index()
         {
             List<Produtos> listaProdutos = new List<Produtos>();
 
@@ -49,14 +49,7 @@ namespace NoPrecin.Controllers
                 }
             }
 
-            //Retorna para a viu todos os produtos
-            if (usuario.AcessToken == null )
-            {
-                return RedirectToAction("Login", "Usuarios");
-            }
-
-            //Se o usuário estiver logado retorna lista com seus produtos
-            return View(listaProdutos.Where(x => x.EmailProprietario == usuario.Email));
+            return View(listaProdutos.Where(x => x.Ativo == true && x.Vendido == false));
         }
 
         public IActionResult Criar()
@@ -112,23 +105,24 @@ namespace NoPrecin.Controllers
             produto.DataCadastro = DateTime.Now;
             produto.Imagem = nomeArquivo;
 
-            _context.Add(produto);
-            await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
+            //TODO: Acesso direto ao banco de dados
+            //_context.Add(produto);
+            //await _context.SaveChangesAsync();
 
-
-            /*var json = JsonConvert.SerializeObject(produto);
+            //TODO: Acesso API
+            var json = JsonConvert.SerializeObject(produto);
             var postRequest = new StringContent(json, Encoding.UTF8, "application/json");
 
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.PostAsync(HttpContext.Session.GetObject("apiUrl") + "novo-produto", postRequest).ConfigureAwait(false))
+                using (var response = await httpClient.PostAsync(apiUrl, postRequest).ConfigureAwait(false))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     produto = JsonConvert.DeserializeObject<Produtos>(apiResponse);
                 }
             }
-            */
+
+            return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> Editar(Guid id)
@@ -153,10 +147,60 @@ namespace NoPrecin.Controllers
             usuario.AcessToken = HttpContext.Session.Get<String>("AcessToken");
             produto.EmailProprietario = HttpContext.Session.Get<String>("Email");
 
-            _context.Update(produto);
-            await _context.SaveChangesAsync();
+            //TODO: Acesso banco de dados
+            //_context.Update(produto);
+            //await _context.SaveChangesAsync();
+
+            //TODO: Acesso API
+            var json = JsonConvert.SerializeObject(produto);
+            var postRequest = new StringContent(json, Encoding.UTF8, "application/json");
+
+            using (var httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.PutAsync(apiUrl + produto.Id, postRequest))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                }
+            }
+
+            return RedirectToAction("ListarPorUsuario");
+        }
+
+        public async Task<IActionResult> Deletar(Guid id)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                await httpClient.DeleteAsync(apiUrl + id);
+            }
 
             return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> ListarPorUsuario()
+        {
+            List<Produtos> listaProdutos = new List<Produtos>();
+
+            Usuario usuario = new Usuario();
+            usuario.Id = HttpContext.Session.Get<Guid>("Id");
+            usuario.AcessToken = HttpContext.Session.Get<String>("AcessToken");
+            usuario.Email = HttpContext.Session.Get<String>("Email");
+            //Retorna para a viu todos os produtos
+            if (usuario.AcessToken == null)
+            {
+                return RedirectToAction("Login", "Usuarios");
+            }
+
+            using (var httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.GetAsync(apiUrl + "por-usuario/" + usuario.Id))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    listaProdutos = JsonConvert.DeserializeObject<List<Produtos>>(apiResponse);
+                }
+            }
+
+            //Se o usuário estiver logado retorna lista com seus produtos
+            return View(listaProdutos);
         }
     }
 }

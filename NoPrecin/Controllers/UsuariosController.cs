@@ -58,7 +58,7 @@ namespace NoPrecin.Controllers
             HttpContext.Session.Set<String>("AcessToken", usuario.AcessToken);
             HttpContext.Session.Set<String>("Email", usuario.Email);
 
-            return RedirectToAction("Index", "Produtos");
+            return RedirectToAction("ListarPorUsuario", "Produtos");
         }
 
         public IActionResult NovaConta()
@@ -99,7 +99,7 @@ namespace NoPrecin.Controllers
             HttpContext.Session.Set<String>("AcessToken", usuario.AcessToken);
             HttpContext.Session.Set<String>("Email", usuario.Email);
 
-            return RedirectToAction("Index", "Produtos");
+            return RedirectToAction("ListarPorUsuario", "Produtos");
         }
     }
 }

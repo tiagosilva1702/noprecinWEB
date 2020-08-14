@@ -13,6 +13,7 @@
         <form asp-action="Editar">
             @Html.HiddenFor(x => x.DataCadastro)
             @Html.HiddenFor(x => x.Imagem)
+            @Html.HiddenFor(x => x.Id)
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">

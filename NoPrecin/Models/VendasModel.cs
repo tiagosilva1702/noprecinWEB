@@ -5,7 +5,10 @@ using System.Threading.Tasks;
 
 namespace NoPrecin.Models
 {
-    public class VendasModel
+    public class Vendas
     {
+        public Guid ProdutoId { get; set; }
+        public DateTime Data { get; set; }
+        public String EmailComprador { get; set; }
     }
 }
