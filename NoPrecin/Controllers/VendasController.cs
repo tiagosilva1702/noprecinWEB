@@ -44,7 +44,7 @@ namespace NoPrecin.Controllers
             return View(produtos);
         }
 
-        public async Task<IActionResult> Venda(Guid Id)
+        public async Task<IActionResult> Venda(Guid Id, Produtos produto)
         {
             Usuario usuario = new Usuario();
             usuario.Id = HttpContext.Session.Get<Guid>("Id");
@@ -55,17 +55,28 @@ namespace NoPrecin.Controllers
             venda.Data = DateTime.Now;
             venda.EmailComprador = HttpContext.Session.Get<String>("Email");
 
+            produto.Ativo = false;
+
+
             //TODO: Acesso direto ao banco de dados
             //_context.Add(venda);
             //await _context.SaveChangesAsync();
 
             //TODO: Acesso API
             var json = JsonConvert.SerializeObject(venda);
+            var jsonP = JsonConvert.SerializeObject(produto);
+
             var postRequest = new StringContent(json, Encoding.UTF8, "application/json");
+            var postRequestP = new StringContent(jsonP, Encoding.UTF8, "application/json");
 
             using (var httpClient = new HttpClient())
             {
                 using (var response = await httpClient.PostAsync(apiUrlv, postRequest).ConfigureAwait(true))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                }
+
+                using (var response = await httpClient.PostAsync(apiUrl, postRequestP).ConfigureAwait(true))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                 }

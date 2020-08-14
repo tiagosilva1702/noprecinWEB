@@ -45,7 +45,7 @@ namespace NoPrecin.Controllers
                 }
             }
 
-            return View(listaProdutos.Where(x => x.Vendido == false && x.Ativo == true));
+            return View(listaProdutos.Where(x => x.Ativo == true));
         }
 
         public IActionResult Equipe()

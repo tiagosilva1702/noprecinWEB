@@ -49,7 +49,7 @@ namespace NoPrecin.Controllers
                 }
             }
 
-            return View(listaProdutos.Where(x => x.Ativo == true && x.Vendido == false));
+            return View(listaProdutos.Where(x => x.Ativo == true));
         }
 
         public IActionResult Criar()
