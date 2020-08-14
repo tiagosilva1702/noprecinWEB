@@ -33,13 +33,13 @@ namespace NoPrecin.Models
     public class EquipeNoPrecin
     {
         public String Nome { get; set; }
-        public String Desdrição { get; set; }
+        public String Descricao { get; set; }
         public String Imagem { get; set; }
 
         public EquipeNoPrecin(string nome, string descricao, string imagem)
         {
             this.Nome = nome;
-            this.Desdrição = descricao;
+            this.Descricao = descricao;
             this.Imagem = imagem;
         }
     }

@@ -27,32 +27,32 @@ namespace NoPrecin.Models
         [Display(Name = "Ativo")]
         public bool Ativo { get; set; }
         [Display(Name = "Categória")]
-        public Categoria Categoria { get; set; }
-        public Guid Id_Usuario { get; set; }
+        public TipoProduto TipoProduto { get; set; }
+        public string EmailProprietario { get; set; }
         [Display(Name = "Vendido")]
         public bool Vendido{ get; set; }
     }
 
-    public enum Categoria
+    public enum TipoProduto
     {
         [Display(Name = "Imóveis")]
-        Imoveis = 0,
+        Imoveis = 1,
         [Display(Name = "Autos Peças")]
-        AutosPecas = 1,
+        AutosPecas = 2,
         [Display(Name = "Para Sua Casa")]
-        ParaSuaCasa = 2,
+        ParaSuaCasa = 3,
         [Display(Name = "Eletrônicos Celulares")]
-        EletronicosCelulares = 3,
+        EletronicosCelulares = 4,
         [Display(Name = "Vagas Emprego")]
-        VagasEmprego = 4,
+        VagasEmprego = 5,
         [Display(Name = "Serviços")]
-        Servicos = 5,
+        Servicos = 6,
         [Display(Name = "Músicas Hobbies")]
-        MusicasHobbies = 6,
+        MusicasHobbies = 7,
         [Display(Name = "Esportes Lazer")]
-        EsportesLazer = 7,
-        ModaBeleza = 8,
+        EsportesLazer = 8,
+        ModaBeleza = 9,
         [Display(Name = "Agro Indústria")]
-        AgroIndustria = 9,
+        AgroIndustria = 10,
     }
 }

@@ -56,7 +56,7 @@ namespace NoPrecin.Controllers
             }
 
             //Se o usuário estiver logado retorna lista com seus produtos
-            return View(listaProdutos.Where(x => x.Id_Usuario == usuario.Id));
+            return View(listaProdutos.Where(x => x.EmailProprietario == usuario.Email));
         }
 
         public IActionResult Criar()
@@ -108,7 +108,7 @@ namespace NoPrecin.Controllers
             }
 
             produto.Id = idImagem;
-            produto.Id_Usuario = usuario.Id;
+            produto.EmailProprietario = usuario.Email;
             produto.DataCadastro = DateTime.Now;
             produto.Imagem = nomeArquivo;
 
@@ -151,11 +151,7 @@ namespace NoPrecin.Controllers
         {
             Usuario usuario = new Usuario();
             usuario.AcessToken = HttpContext.Session.Get<String>("AcessToken");
-            usuario.Email = HttpContext.Session.Get<String>("Email");
-
-            Guid idImagem = Guid.NewGuid();
-            produto.Imagem = Convert.ToString(idImagem);
-            produto.Id_Usuario = HttpContext.Session.Get<Guid>("Id");
+            produto.EmailProprietario = HttpContext.Session.Get<String>("Email");
 
             _context.Update(produto);
             await _context.SaveChangesAsync();
