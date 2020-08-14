@@ -20,6 +20,7 @@ namespace NoPrecin.Controllers
 
         private static string _urlBase;
 
+        private readonly string apiUrl = "https://localhost:44328/api/produtos";
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
