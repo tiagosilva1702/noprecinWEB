@@ -149,7 +149,6 @@ C:\Users\TIAGO\Documents\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoP
 C:\Users\TIAGO\Documents\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoPrecin.TagHelpers.output.cache
 C:\Users\TIAGO\Documents\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoPrecin.RazorCoreGenerate.cache
 C:\Users\TIAGO\Documents\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\TIAGO\Documents\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\TIAGO\Documents\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\TIAGO\Documents\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\TIAGO\Documents\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -882,3 +881,4 @@ C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcore
 C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoPrecin.pdb
 C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\NoPrecin.genruntimeconfig.cache
 C:\Users\TIAGO\Documents\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\Razor\Views\Vendas\Index.cshtml.g.cs
+C:\Users\TIAGO\Documents\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\Razor\Views\Home\Equipe.cshtml.g.cs

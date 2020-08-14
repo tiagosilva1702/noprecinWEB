@@ -48,9 +48,14 @@ namespace NoPrecin.Controllers
             return View(listaProdutos.Where(x => x.Vendido == false && x.Ativo == true));
         }
 
-        public IActionResult Privacy()
+        public IActionResult Equipe()
         {
-            return View();
+            List<EquipeNoPrecin> equipe = new List<EquipeNoPrecin>();
+            equipe.Add(new EquipeNoPrecin("Bruno Lima", "Analista de Sistemas", "bruno78e-ea37-4d44-b25b-899032c0408f.jpg"));
+            equipe.Add(new EquipeNoPrecin("Luana Menezes", "Analista de Sistemas", "luana78e-ea37-4d44-b25b-899032c0408f.jpg"));
+            equipe.Add(new EquipeNoPrecin("Tiago Silva", "Analista de Sistemas", "tiago78e-ea37-4d44-b25b-899032c0408f.jpg"));
+
+            return View(equipe);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

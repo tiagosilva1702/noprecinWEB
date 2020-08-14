@@ -24,10 +24,25 @@ namespace NoPrecin.Models
         public string ConfirmPassword { get; set; }
     }
 
-
     public enum Perfil
     {
         administrador,
         usuario
     }
+
+    public class EquipeNoPrecin
+    {
+        public String Nome { get; set; }
+        public String Desdrição { get; set; }
+        public String Imagem { get; set; }
+
+        public EquipeNoPrecin(string nome, string descricao, string imagem)
+        {
+            this.Nome = nome;
+            this.Desdrição = descricao;
+            this.Imagem = imagem;
+        }
+    }
+
+    
 }
