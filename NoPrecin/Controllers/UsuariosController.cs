@@ -30,9 +30,7 @@ namespace NoPrecin.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(Usuario model)
         {
-            Usuario usuario = new Usuario();
-
-            JObject jObject = new JObject();
+            UsuarioLogado usuario = new UsuarioLogado();
 
             var json = JsonConvert.SerializeObject(model);
 
@@ -44,25 +42,21 @@ namespace NoPrecin.Controllers
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
 
-                    jObject = (JObject)JsonConvert.DeserializeObject(apiResponse);
+                    usuario = JsonConvert.DeserializeObject<UsuarioLogado>(apiResponse);
 
-                    if (Convert.ToBoolean(jObject["sucess"]) == false)
+                    if (usuario.sucess == false)
                     {
-                        ViewData["Error"] = jObject["errors"];
+                        ViewData["Error"] = usuario.errors[0].ToString();
                         return View();
                     }
-
-                    usuario.AcessToken = jObject["data"].Value<string>("acessToken");
-                    usuario.Id = Guid.Parse(jObject["data"]["userToken"].Value<string>("id"));
-                    usuario.Email = jObject["data"]["userToken"].Value<string>("email");
                 }
             }
 
             this.Autenticar();
 
-            HttpContext.Session.Set<Guid>("Id", usuario.Id);
-            HttpContext.Session.Set<String>("AcessToken", usuario.AcessToken);
-            HttpContext.Session.Set<String>("Email", usuario.Email);
+            HttpContext.Session.Set<Guid>("Id", usuario.data.userToken.id);
+            HttpContext.Session.Set<String>("AcessToken", usuario.data.acessToken);
+            HttpContext.Session.Set<String>("Email", usuario.data.userToken.email);
 
             return RedirectToAction("ListarPorUsuario", "Produtos");
         }
@@ -75,8 +69,7 @@ namespace NoPrecin.Controllers
         [HttpPost]
         public async Task<IActionResult> NovaConta(Usuario model)
         {
-            Usuario usuario = new Usuario();
-            JObject jObject = new JObject();
+            UsuarioLogado usuario = new UsuarioLogado();
 
             var json = JsonConvert.SerializeObject(model);
 
@@ -87,25 +80,21 @@ namespace NoPrecin.Controllers
                 using (var response = await httpClient.PostAsync(apiUrl + "nova-conta", postRequest).ConfigureAwait(false))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
-                    jObject = (JObject)JsonConvert.DeserializeObject(apiResponse);
+                    usuario = JsonConvert.DeserializeObject<UsuarioLogado>(apiResponse);
 
-                    if (Convert.ToBoolean(jObject["sucess"]) == false)
+                    if (usuario.sucess == false)
                     {
-                        ViewData["Error"] = jObject["errors"];
+                        ViewData["Error"] = usuario.errors[0].ToString();
                         return View();
                     }
-
-                    usuario.AcessToken = jObject["data"].Value<string>("acessToken");
-                    usuario.Id = Guid.Parse(jObject["data"]["userToken"].Value<string>("id"));
-                    usuario.Email = jObject["data"]["userToken"].Value<string>("email");
                 }
             }
 
             this.Autenticar();
 
-            HttpContext.Session.Set<Guid>("Id", usuario.Id);
-            HttpContext.Session.Set<String>("AcessToken", usuario.AcessToken);
-            HttpContext.Session.Set<String>("Email", usuario.Email);
+            HttpContext.Session.Set<Guid>("Id", usuario.data.userToken.id);
+            HttpContext.Session.Set<String>("AcessToken", usuario.data.acessToken);
+            HttpContext.Session.Set<String>("Email", usuario.data.userToken.email);
 
             return RedirectToAction("ListarPorUsuario", "Produtos");
         }
@@ -113,9 +102,8 @@ namespace NoPrecin.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            HttpContext.Session.Set<Guid>("Id", Guid.Empty) ;
-            HttpContext.Session.Set<String>("AcessToken", "");
-            HttpContext.Session.Set<String>("Email", "");
+
+            HttpContext.Session.Clear();
 
             return RedirectToAction("Index", "Home");
         }

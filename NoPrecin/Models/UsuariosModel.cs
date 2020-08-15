@@ -30,6 +30,27 @@ namespace NoPrecin.Models
         usuario
     }
 
+    public class UsuarioLogado
+    {
+        public bool sucess { get; set; }
+        public List<string> errors { get; set; }
+
+        public Data data { get; set; }
+    }
+
+    public class Data
+    {
+        public string acessToken { get; set; }
+
+        public userToken userToken { get; set; }
+    }
+
+    public class userToken
+    {
+        public Guid id { get; set; }
+        public string email { get; set; }
+    }
+
     public class EquipeNoPrecin
     {
         public String Nome { get; set; }
@@ -44,5 +65,5 @@ namespace NoPrecin.Models
         }
     }
 
-    
+
 }

@@ -124,7 +124,7 @@ namespace NoPrecin.Controllers
                 }
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("ListarPorUsuario", "Produtos");
         }
 
         public async Task<IActionResult> Editar(Guid id)
@@ -173,7 +173,7 @@ namespace NoPrecin.Controllers
                 }
             }
 
-            return RedirectToAction("ListarPorUsuario");
+            return RedirectToAction("ListarPorUsuario", "Produtos");
         }
 
         public async Task<IActionResult> Deletar(Guid id)
@@ -188,7 +188,7 @@ namespace NoPrecin.Controllers
                 await httpClient.DeleteAsync(apiUrl + id);
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("ListarPorUsuario", "Produtos");
         }
 
 
@@ -225,6 +225,7 @@ namespace NoPrecin.Controllers
         public async Task<IActionResult> MinhasCompras()
         {
             List<Vendas> listarVendas = new List<Vendas>();
+            List<Vendas> lista = new List<Vendas>();
 
             Usuario usuario = new Usuario();
             usuario.Id = HttpContext.Session.Get<Guid>("Id");
@@ -244,7 +245,15 @@ namespace NoPrecin.Controllers
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
 
-                    listarVendas = JsonConvert.DeserializeObject<List<Vendas>>(apiResponse);
+                    lista = JsonConvert.DeserializeObject<List<Vendas>>(apiResponse);
+                }
+            }
+
+            foreach (var item in lista)
+            {
+                if (item.EmailComprador == usuario.Email)
+                {
+                    listarVendas.Add(item);
                 }
             }
             //Se o usuário estiver logado retorna lista com seus produtos

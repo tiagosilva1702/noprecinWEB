@@ -63,10 +63,17 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Vendido)
                     </td>
-                    <td>
-                        @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
-                        @Html.ActionLink("Deletar", "Deletar", new { id = item.Id })
-                    </td>
+                    @if (item.Vendido == false)
+                    {
+                        <td>
+                            @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
+                            @Html.ActionLink("Deletar", "Deletar", new { id = item.Id })
+                        </td>
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
                 </tr>
             }
         }
