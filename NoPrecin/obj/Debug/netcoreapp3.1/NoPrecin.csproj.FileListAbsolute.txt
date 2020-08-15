@@ -883,3 +883,4 @@ C:\Users\luame\OneDrive\Documentos\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcore
 C:\Users\TIAGO\Documents\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\Razor\Views\Vendas\Index.cshtml.g.cs
 C:\Users\TIAGO\Documents\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\Razor\Views\Home\Equipe.cshtml.g.cs
 C:\Users\TIAGO\Documents\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\Razor\Views\Produtos\ListarPorUsuario.cshtml.g.cs
+C:\Users\TIAGO\Documents\GitHub\noprecinWEB\NoPrecin\obj\Debug\netcoreapp3.1\Razor\Views\Produtos\MinhasCompras.cshtml.g.cs

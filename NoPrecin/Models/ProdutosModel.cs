@@ -30,7 +30,7 @@ namespace NoPrecin.Models
         public TipoProduto TipoProduto { get; set; }
         public string EmailProprietario { get; set; }
         [Display(Name = "Vendido")]
-        public bool Vendido{ get; set; }
+        public bool Vendido{ get { return !Ativo; } }
     }
 
     public enum TipoProduto

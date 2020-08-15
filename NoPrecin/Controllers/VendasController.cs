@@ -35,6 +35,8 @@ namespace NoPrecin.Controllers
 
             using (var httpClient = new HttpClient())
             {
+                httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + usuario.AcessToken);
+
                 using (var response = await httpClient.GetAsync(apiUrl + "/" + id))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
@@ -71,12 +73,15 @@ namespace NoPrecin.Controllers
 
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.PostAsync(apiUrlv, postRequest).ConfigureAwait(true))
+                httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + usuario.AcessToken);
+
+
+                using (var response = await httpClient.PutAsync(apiUrl + "/" + produto.Id, postRequestP))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                 }
 
-                using (var response = await httpClient.PostAsync(apiUrl, postRequestP).ConfigureAwait(true))
+                using (var response = await httpClient.PostAsync(apiUrlv, postRequest).ConfigureAwait(true))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                 }

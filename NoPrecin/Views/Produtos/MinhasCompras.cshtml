@@ -1,0 +1,66 @@
+﻿@model IEnumerable<NoPrecin.Models.Vendas>
+
+
+@{
+    Produtos produtos = new Produtos();
+    ViewData["Title"] = "MinhasCompras";
+}
+
+<h1>Minhas Compras</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => produtos.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => produtos.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => produtos.Valor)
+            </th>
+            <th>
+                @Html.DisplayName("Data Compra")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => produtos.TipoProduto)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Produto.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Produto.Descricao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Produto.Valor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Data)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Produto.TipoProduto)
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td>
+                    <b>Nenhum produto encontrado</b>
+                </td>
+                <td>
+            </tr>
+        }
+    </tbody>
+</table>

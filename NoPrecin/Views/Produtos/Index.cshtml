@@ -24,12 +24,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.TipoProduto)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ativo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Vendido)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -55,12 +49,6 @@
                         @Html.DisplayFor(modelItem => item.TipoProduto)
                     </td>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Ativo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Vendido)
-                    </td>
                     <td>
                         @Html.ActionLink("Comprar", "Index", "Vendas",  new { id = item.Id })
                     </td>

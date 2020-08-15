@@ -19,7 +19,7 @@ namespace NoPrecin.Controllers
     public class ProdutosController : Controller
     {
         private readonly string apiUrl = "https://localhost:44328/api/produtos/";
-
+        private readonly string apiUrlv = "https://localhost:44328/api/vendas/";
 
         //Define uma instância de IHostingEnvironment
         IWebHostEnvironment _appEnvironment;
@@ -115,6 +115,8 @@ namespace NoPrecin.Controllers
 
             using (var httpClient = new HttpClient())
             {
+                httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + usuario.AcessToken);
+
                 using (var response = await httpClient.PostAsync(apiUrl, postRequest).ConfigureAwait(false))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
@@ -128,9 +130,15 @@ namespace NoPrecin.Controllers
         public async Task<IActionResult> Editar(Guid id)
         {
             Produtos produtos = new Produtos();
+            Usuario usuario = new Usuario();
+            usuario.Id = HttpContext.Session.Get<Guid>("Id");
+            usuario.AcessToken = HttpContext.Session.Get<String>("AcessToken");
+            usuario.Email = HttpContext.Session.Get<String>("Email");
 
             using (var httpClient = new HttpClient())
             {
+                httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + usuario.AcessToken);
+
                 using (var response = await httpClient.GetAsync(apiUrl + id))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
@@ -157,6 +165,8 @@ namespace NoPrecin.Controllers
 
             using (var httpClient = new HttpClient())
             {
+                httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + usuario.AcessToken);
+
                 using (var response = await httpClient.PutAsync(apiUrl + produto.Id, postRequest))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
@@ -168,13 +178,19 @@ namespace NoPrecin.Controllers
 
         public async Task<IActionResult> Deletar(Guid id)
         {
+            Usuario usuario = new Usuario();
+            usuario.AcessToken = HttpContext.Session.Get<String>("AcessToken");
+
             using (var httpClient = new HttpClient())
             {
+                httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + usuario.AcessToken);
+
                 await httpClient.DeleteAsync(apiUrl + id);
             }
 
             return RedirectToAction("Index");
         }
+
 
         public async Task<IActionResult> ListarPorUsuario()
         {
@@ -192,8 +208,11 @@ namespace NoPrecin.Controllers
 
             using (var httpClient = new HttpClient())
             {
+                httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + usuario.AcessToken);
+
                 using (var response = await httpClient.GetAsync(apiUrl + "por-usuario/" + usuario.Id))
                 {
+
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     listaProdutos = JsonConvert.DeserializeObject<List<Produtos>>(apiResponse);
                 }
@@ -201,6 +220,35 @@ namespace NoPrecin.Controllers
 
             //Se o usuário estiver logado retorna lista com seus produtos
             return View(listaProdutos);
+        }
+
+        public async Task<IActionResult> MinhasCompras()
+        {
+            List<Vendas> listarVendas = new List<Vendas>();
+
+            Usuario usuario = new Usuario();
+            usuario.Id = HttpContext.Session.Get<Guid>("Id");
+            usuario.AcessToken = HttpContext.Session.Get<String>("AcessToken");
+            usuario.Email = HttpContext.Session.Get<String>("Email");
+            //Retorna para a viu todos os produtos
+            if (usuario.AcessToken == null)
+            {
+                return RedirectToAction("Login", "Usuarios");
+            }
+
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + usuario.AcessToken);
+
+                using (var response = await httpClient.GetAsync(apiUrlv))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+
+                    listarVendas = JsonConvert.DeserializeObject<List<Vendas>>(apiResponse);
+                }
+            }
+            //Se o usuário estiver logado retorna lista com seus produtos
+            return View(listarVendas);
         }
     }
 }

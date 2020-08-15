@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -42,6 +43,12 @@ namespace NoPrecin
                     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                    .AddCookie(
+                options =>
+                {
+                    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+                });
 
             services.AddControllersWithViews();
         }
@@ -65,10 +72,12 @@ namespace NoPrecin
 
             app.UseRouting();
 
+            app.UseCookiePolicy();
+
             app.UseAuthentication();
 
             app.UseAuthorization();
-            
+
             app.UseSession();
 
             app.UseEndpoints(endpoints =>
